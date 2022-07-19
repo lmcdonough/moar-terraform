@@ -19,3 +19,6 @@
 
 # .hcl files
 *.hcl
+
+# vscode
+*.vscode/
