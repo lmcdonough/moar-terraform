@@ -24,7 +24,7 @@ Install-Module AWSPowerShell.NetCore -Scope CurrentUser
 # Windows: Run the JuniorAdminIssue.ps1 script
 .\JuniorAdminIssue.ps1
 
-# Update your terraform.tfvars file to comment out the current 
+# Update your terraform.tfvars file to comment out the current
 # private_subnets, public_subnets, and subnet_count values and
 # uncomment the updated values
 
