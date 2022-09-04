@@ -1,11 +1,11 @@
 # Configure an AWS profile with proper credentials
-aws configure --profile deep-dive
+aws configure --profile levi2
 
 # Linux or MacOS
-export AWS_PROFILE=deep-dive
+export AWS_PROFILE=levi2
 
 # Windows
-$env:AWS_PROFILE="deep-dive"
+$env:AWS_PROFILE="levi2"
 
 # Deploy the current environment
 terraform init

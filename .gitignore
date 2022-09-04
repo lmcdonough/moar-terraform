@@ -19,3 +19,6 @@
 
 # .hcl files
 *.hcl
+
+# other pluralsight modules
+**/m[0-2,4-9]
