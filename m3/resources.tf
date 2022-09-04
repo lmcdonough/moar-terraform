@@ -1,5 +1,5 @@
 ##################################################################################
-# CONFIGURATION - added for Terraform 0.14
+# CONFIGURATION
 ##################################################################################
 
 terraform {
@@ -35,7 +35,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~>2.0"
 
-  name = "vividly-primary"
+  name = "vividly"
 
   cidr            = var.cidr_block
   azs             = slice(data.aws_availability_zones.available.names, 0, var.subnet_count)
