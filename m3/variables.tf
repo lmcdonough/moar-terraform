@@ -15,10 +15,10 @@ variable "cidr_block" {
 }
 
 variable "private_subnets" {
-  type = list(any)
+  type = list
 }
 
 variable "public_subnets" {
-  type = list(any)
+  type = list
 }
 
