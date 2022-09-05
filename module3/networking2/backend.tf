@@ -11,5 +11,5 @@ terraform {
 tags {
   Name = "networking-state"
   State-Backend = "Consul"
-  Environment = "dev"
+  Environment = "Development"
 }
