@@ -213,13 +213,13 @@ resource "local_file" "aws_keys" {
 aws_access_key_id = ${var.aws_access_key}
 aws_secret_access_key = ${var.aws_secret_key}
 
-[sallysue]
-aws_access_key_id = ${aws_iam_access_key.sallysue.id}
-aws_secret_access_key = ${aws_iam_access_key.sallysue.secret}
+[levi]
+aws_access_key_id = ${aws_iam_access_key.levi.id}
+aws_secret_access_key = ${aws_iam_access_key.levi.secret}
 
-[marymoe]
-aws_access_key_id = ${aws_iam_access_key.marymoe.id}
-aws_secret_access_key = ${aws_iam_access_key.marymoe.secret} */
+[jonny]
+aws_access_key_id = ${aws_iam_access_key.jonny.id}
+aws_secret_access_key = ${aws_iam_access_key.jonny.secret} */
 
 EOF
     filename = "${var.user_home_path}/.aws/credentials"
