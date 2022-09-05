@@ -3,9 +3,9 @@
 ##################################################################################
 
 provider "aws" {
-  access_key = "${var.aws_access_key}"
+  /* access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
-  region     = "us-west-2"
+  region     = "us-east-1" */
 }
 
 ##################################################################################
@@ -27,14 +27,13 @@ module "vpc" {
   azs = "${slice(data.aws_availability_zones.available.names,0,var.subnet_count)}"
   private_subnets = ["10.0.1.0/24","10.0.3.0/24"]
   public_subnets = ["10.0.0.0/24","10.0.2.0/24"]
-
   enable_nat_gateway = true
+  create_database_subnet_group = true
 
-  create_database_subnet_group = false
-
-  
   tags {
-    Environment = "${terraform.workspace}"
+    Name = "vividly"
+    Environment = "dev"
+
   }
 }
 

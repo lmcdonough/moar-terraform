@@ -20,7 +20,7 @@ Set-AWSCredential -SecretKey $values.aws_secret_key.Replace('"','') `
      -AccessKey $values.aws_access_key.Replace('"','')
 
 #Set the default region as applicable
-$region = "us-west-2"
+$region = "us-east-1"
 Set-DefaultAWSRegion -Region $region
 
 #Get the VPC and AZs
@@ -35,7 +35,7 @@ $publicSubnet = New-EC2Subnet -AvailabilityZone $azs[2].ZoneName `
 
 #Get the Public route table for all public subnets and associate the new public subnet
 $publicRouteTable = Get-EC2RouteTable `
-     -Filter @{ Name="tag:Name"; values="Terraform-public"} -Region $region
+     -Filter @{ Name="tag:Name"; values="vividly-public"} -Region $region
 $publicRouteTableAssociation = Register-EC2RouteTable `
      -RouteTableId $publicRouteTable.RouteTableId -SubnetId $publicSubnet.SubnetId
 
@@ -52,7 +52,7 @@ New-EC2Route -DestinationCidrBlock 0.0.0.0/0 -NatGatewayId $ngw.NatGateway.NatGa
 Register-EC2RouteTable -RouteTableId $privateRouteTable.RouteTableId `
      -SubnetId $privateSubnet.SubnetId
 
-Write-Output "Oh Jimmy, what did you do?"
+Write-Output "Did I do it?"
 
 $JimmysResources = @{}
 $JimmysResources.Add("privateSubnet",$privateSubnet.SubnetId)
