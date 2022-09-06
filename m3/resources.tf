@@ -16,8 +16,10 @@ terraform {
 ##################################################################################
 
 provider "aws" {
-  profile = "deep-dive"
-  region  = var.region
+  # profile = "deep-dive"
+  # region  = var.region
+  profile = "levi"
+  region = var.region
 }
 
 ##################################################################################
@@ -35,16 +37,14 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~>2.0"
 
-  name = "globo-primary"
+  name = "vividly"
 
   cidr            = var.cidr_block
   azs             = slice(data.aws_availability_zones.available.names, 0, var.subnet_count)
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
-
-  enable_nat_gateway = false
-
-  create_database_subnet_group = false
+  enable_nat_gateway = true
+  create_database_subnet_group = true
 
 
   tags = {
@@ -52,9 +52,3 @@ module "vpc" {
     Team        = "Network"
   }
 }
-
-
-
-
-
-

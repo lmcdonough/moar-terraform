@@ -1,12 +1,12 @@
 # Set AWS profile to use deep-dive
-export AWS_PROFILE=deep-dive
+export AWS_PROFILE=levi
 
 # If you don't have jq installed, you're going to need it
-sudo apt install jq -y
+# sudo apt install jq -y
 
-# We're going to manually create two new subnets
+# manually create two new subnets
 
-# First let's get the existing VPC id
+# First get the existing VPC id
 vpc_id=$(aws ec2 describe-vpcs --filters Name="tag:Name",Values="globo-primary" \
   --query 'Vpcs[0].VpcId' --output text)
 
@@ -27,16 +27,14 @@ priv_rt=$(aws ec2 create-route-table --vpc-id $vpc_id)
 priv_rt_id=$(echo $priv_rt | jq .RouteTable.RouteTableId -r)
 
 # Get the subnet ID for the private subnet
-
 priv_subnet_id=$(echo $priv_subnet | jq .Subnet.SubnetId -r)
 
 # Associate route table with private subnet
-
 aws ec2 associate-route-table --route-table-id $priv_rt_id --subnet-id $priv_subnet_id
 
 # Get the public route table
 pub_rt_id=$(aws ec2 describe-route-tables --filters Name="vpc-id",Values=$vpc_id \
-  Name="tag:Name",Values="globo-primary-public" \
+  Name="tag:Name",Values="vividly-public" \
   --query RouteTables[0].RouteTableId --output text)
 
 #Get the subnet ID for the public subnet
