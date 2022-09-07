@@ -21,4 +21,4 @@
 *.hcl
 
 # other pluralsight modules
-**/m[0-2,4-9]
+# **/m[0-2,4-9]
